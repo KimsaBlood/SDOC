@@ -21,6 +21,23 @@ public partial class AdminAnclas_Visualizar : System.Web.UI.Page
             if (tblAnclas.Rows.Count > 0)
             {
                 int anclaId = Convert.ToInt32(tblAnclas.Rows[0]["idAncla"].ToString());
+                
+                for (int i = 0; i < tblAnclas.Rows.Count; i++)
+                {
+                    String idTipo = tblAnclas.Rows[i]["idTipoAncla"].ToString();
+                    if (idTipo == "2")
+                    {
+                        tblAnclas.Rows[i]["rutaFile"] = "<audio controls  src='../" + tblAnclas.Rows[i]["rutaFile"].ToString() + "' type='audio/mp3'></audio>";
+                    }
+                    else if (idTipo == "3")
+                    {
+                        tblAnclas.Rows[i]["rutaFile"] = "<img src='../" + tblAnclas.Rows[i]["rutaFile"].ToString() + "' class='img-thumbnail' style='width:300px;'>";
+                    }
+                    else if (idTipo == "6")
+                    {
+                        tblAnclas.Rows[i]["rutaFile"] = "<video width=300 controls><source src='../" + tblAnclas.Rows[i]["rutaFile"].ToString() + "' type='video/mp4;codecs='avc1.42E01E, mp4a.40.2''></video>";
+                    }
+                }
             }
             gvAnclas.GridLines = GridLines.None;
             gvAnclas.DataSource = tblAnclas;

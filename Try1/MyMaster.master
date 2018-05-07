@@ -38,6 +38,7 @@
            }.panelMaster{
                 background-color:white;
                 height: 550px;
+                overflow-y:auto;
             }
     </style>
 </head>

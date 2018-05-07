@@ -155,8 +155,10 @@ public class cAnclas
     }
     public DataTable TraeInfoAnclas()
     {
+        String Mensaje;
         DatosSql sql = new DatosSql();
         DataTable tbl = sql.TraerDataTable("getAnclas", userId);
+        
         return tbl;
     }
 }

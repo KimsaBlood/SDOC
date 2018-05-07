@@ -17,7 +17,7 @@
                         <asp:ButtonField HeaderText="Tipo de Ancla" DataTextField="tipoAncla" />
                         <asp:TemplateField HeaderText="Archivo">  
                         <ItemTemplate>  
-                               <<%#Eval("rutaFile")%>>
+                               <%#Eval("rutaFile")%>
                             
                         </ItemTemplate>  
                     </asp:TemplateField>
