@@ -37,8 +37,7 @@
                background-color:#e9ebee;
            }.panelMaster{
                 background-color:white;
-                height: 550px;
-                overflow-y:auto;
+                min-height: 550px;
             }
     </style>
 </head>
@@ -66,8 +65,9 @@
              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mis anclas <span class="caret"></span></a>
              <ul class="dropdown-menu">
                 <li><asp:LinkButton runat="server" OnClick="RegistrarA_Click">Nueva ancla</asp:LinkButton></li>
+                 <li><asp:LinkButton runat="server" OnClick="EstimA_Click">Estimular ancla</asp:LinkButton></li>
                  <li><asp:LinkButton runat="server" OnClick="CheckA_Click">Ver mis anclas</asp:LinkButton></li>
-                <li><asp:LinkButton runat="server" OnClick="ModifyA_Click">Moficiar ancla</asp:LinkButton></li>
+                <li><asp:LinkButton runat="server" OnClick="ModifyA_Click">Moficar ancla</asp:LinkButton></li>
                 <li><asp:LinkButton runat="server" OnClick="DeleteA_Click">Eliminar ancla</asp:LinkButton></li>
           </ul>
          </li>

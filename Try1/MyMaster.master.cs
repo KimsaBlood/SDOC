@@ -15,6 +15,12 @@ public partial class MyMaster : System.Web.UI.MasterPage
         }
     }
 
+    protected void EstimA_Click(object sender, EventArgs e)
+    {
+        Response.Redirect(Request.ApplicationPath + "AdminAnclas/Estimular.aspx");
+
+    }
+
     protected void Check_Click(object sender, EventArgs e)
     {
         String hola = Request.ApplicationPath;
