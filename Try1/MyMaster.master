@@ -1,0 +1,117 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MyMaster.master.cs" Inherits="MyMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+         .jconfirm.jconfirm-material .jconfirm-box{
+        border-top-style:solid;
+        border-top-color:#5bc0de;
+        border-top-width:10px;
+}
+        .navbar-default{
+            background-color: #5bc0de;
+            border-color:#46b8da;
+            color:white;
+        }
+        .navbar-default .navbar-brand,.navbar-default .navbar-nav>li>a{
+            color:white;
+        } .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+              background-color:#d9edf7;
+              color: #31708f;
+          }body{
+               background-color:#e9ebee;
+           }.panelMaster{
+                background-color:white;
+                height: 550px;
+            }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><asp:LinkButton runat="server" OnClick="Home_Click">Inicio <span class="sr-only">(current)</span></asp:LinkButton></li>
+        <li><a href="#">Calibrar</a></li>
+         <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mis anclas <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+                <li><asp:LinkButton runat="server" OnClick="RegistrarA_Click">Nueva ancla</asp:LinkButton></li>
+                 <li><asp:LinkButton runat="server" OnClick="CheckA_Click">Ver mis anclas</asp:LinkButton></li>
+                <li><asp:LinkButton runat="server" OnClick="ModifyA_Click">Moficiar ancla</asp:LinkButton></li>
+                <li><asp:LinkButton runat="server" OnClick="DeleteA_Click">Eliminar ancla</asp:LinkButton></li>
+          </ul>
+         </li>
+        <li><a href="#">Deteccion</a></li>
+        <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reportes <span class="caret"></span></a>
+             <ul class="dropdown-menu">
+                <li><asp:LinkButton runat="server">Anclas</asp:LinkButton></li>
+                <li><asp:LinkButton runat="server">Sesiones de detección</asp:LinkButton></li>
+          </ul>
+         </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mi cuenta <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><asp:LinkButton runat="server" OnClick="Check_Click">Ver mi cuenta</asp:LinkButton></li>
+            <li><asp:LinkButton runat="server" OnClick="Modify_Click">Moficiar mi cuenta</asp:LinkButton></li>
+            <li><asp:LinkButton runat="server" OnClick="Delete_Click">Eliminar mi cuenta</asp:LinkButton></li>
+          </ul>
+        </li>
+         <li>
+             <asp:LinkButton runat="server" OnClick="Close_Click" CssClass="pull-right">Cerrar sesion</asp:LinkButton>
+         </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
+                    <div class="panel panel-info">
+                        <div class="panel-body panelMaster">
+                             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
+       
+    </div>
+
+    </form>
+   
+</body>
+</html>
