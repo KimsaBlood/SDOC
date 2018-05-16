@@ -22,8 +22,8 @@
         border-top-width:10px;
 }
         body{
-            background: -prefix-linear-gradient(180deg, rgba(220,220,220,0), white),url("images/fondo3.jpg");
-            background: linear-gradient(0, rgba(200,200,200,0), rgba(250,250,250,1)), url("images/fondo3.jpg");
+            background: -prefix-linear-gradient(180deg, rgba(220,220,220,0), white),url("../images/fondo3.jpg");
+            background: linear-gradient(0, rgba(200,200,200,0), rgba(250,250,250,1)), url("../images/fondo3.jpg");
 background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
     background-position: center center; 
@@ -61,7 +61,7 @@ background-size:     cover;                      /* <------ */
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="name">Nombre (s):</label>                
                             <div class="col-sm-7">
-                                <asp:TextBox id="name" runat="server" type="text" class="form-control" name="name" required="required"/>
+                                <asp:TextBox id="name" runat="server" type="text" class="form-control" name="name" required="required" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -85,7 +85,7 @@ background-size:     cover;                      /* <------ */
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="userName">Usuario:</label>                
                             <div class="col-sm-7">
-                                <asp:TextBox id="userName" runat="server" type="text" class="form-control" name="userName" required="required"/>
+                                <asp:TextBox id="userName" runat="server" type="text" class="form-control" name="userName" required="required" pattern=".{6,}" title="El nombre de usuario debe contener mas de 6 caracteres"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -103,7 +103,7 @@ background-size:     cover;                      /* <------ */
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="photo">Foto:</label>                
                             <div class="col-sm-7">
-                                <asp:FileUpload id="photo" runat="server" class="" name="photo" style="color:transparent"  />
+                                <asp:FileUpload id="photo" runat="server" class="" name="photo" style="color:transparent" accept="image/*" pattern=".+(\.gif|\.jpg|\.png)" title="El archivo debe tener extensión gif, jpg o png" />
                             </div>
                         </div>
                         <center><asp:Button CssClass="btn btn-info" style="width:150px;" Text="Enviar" OnClick="Regis_Click" runat="server" /></center>

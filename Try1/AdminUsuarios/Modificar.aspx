@@ -69,7 +69,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="photo">Foto:</label>                
                             <div class="col-sm-7">
-                                <asp:FileUpload id="photo" runat="server" class="" name="photo" style="color:transparent"  />
+                                <asp:FileUpload id="photo" runat="server" class="" name="photo" style="color:transparent" accept="image/*"  />
                             </div>
                         </div>
                         <center><asp:Button CssClass="btn btn-info" style="width:150px;" Text="Modificar" OnClick="Modify_Click" runat="server" /></center>

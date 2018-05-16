@@ -55,7 +55,7 @@
                     <div class="form-group">
                             <asp:Label runat="server" id="lblFile" class="control-label col-sm-5" for="file" Visible="false">Archivo:</asp:Label>                
                             <div class="col-sm-7">
-                                <asp:FileUpload id="file" runat="server" class="form-control" name="file" visible="false" />
+                                <asp:FileUpload id="file" runat="server" class="form-control" name="file" visible="false" accept="image/* video/mp4 video/ogg audio/mp3 audio/wav audio/ogg" />
                             </div>
                         </div>
                     <asp:Button runat="server" CssClass="btn btn-info" Text="Modifcar" OnClick="Modify_Click" />
