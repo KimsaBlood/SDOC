@@ -57,6 +57,10 @@ public partial class MyMaster : System.Web.UI.MasterPage
     {
         Response.Redirect(Request.ApplicationPath + "Inicio.aspx");
     }
+    protected void Calibrar_Click(object sender, EventArgs e)
+    {
+        Response.Redirect(Request.ApplicationPath + "Monitoreo/Monitoreo.aspx");
+    }
     protected void Close_Click(object sender, EventArgs e)
     {
         Session.Abandon();

@@ -26,8 +26,7 @@
         border-top-width:10px;
 }
     body{
-        background:url("images/fondo1.jpg");
-            background:  url("images/fondo1.jpg");
+            background:  url("../images/fondo1.jpg");
 background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
     background-position: center center; 
