@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27428.2027
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Try1", "Try1\", "{DD8E6B3B-773D-4555-BD48-C6A28F8A2D86}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -40,6 +40,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DD8E6B3B-773D-4555-BD48-C6A28F8A2D86} = {663CA3C8-1B3B-483B-A2A3-8F22BACB61F2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {91197F72-BF9C-4FC9-B6C9-BF99117B6440}
