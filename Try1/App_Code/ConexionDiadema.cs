@@ -104,8 +104,8 @@ public class ConexionDiadema
     [OperationContract]
     public string DesconectarDiadema()
     {
-        StreamWriter dispositivo = new StreamWriter(System.AppDomain.CurrentDomain.BaseDirectory + "dispositivo.txt");
-        dispositivo.Close();
+        //StreamWriter dispositivo = new StreamWriter(System.AppDomain.CurrentDomain.BaseDirectory + "dispositivo.txt");
+        //dispositivo.Close();
         connector.Close();
         De = null;
         return "Desconectando";
@@ -138,8 +138,8 @@ public class ConexionDiadema
                 //A Poor Signal value of 0 indicates that your headset is fitting properly
                 numS++;               
                 //Console.WriteLine("Poor Signal:" + tgParser.ParsedData[i]["PoorSignal"]);
-                archO.Write(numS+":");
-                archO.WriteLine(i+"Poor Signal:" + tgParser.ParsedData[i]["PoorSignal"]);
+                archO.WriteLine(numS+":");
+                archO.WriteLine(i+"Poor Signal: " + tgParser.ParsedData[i]["PoorSignal"]);
                 PoorSig = (byte)tgParser.ParsedData[i]["PoorSignal"];
             }
 
@@ -157,7 +157,7 @@ public class ConexionDiadema
 
             if (tgParser.ParsedData[i].ContainsKey("EegPowerAlpha1"))
             {
-                archO.WriteLine(i+"Alpha: " + tgParser.ParsedData[i]["EegPowerAlpha1"]);
+                archO.WriteLine(i+"Alpha1: " + tgParser.ParsedData[i]["EegPowerAlpha1"]);
                 //Console.WriteLine("Alpha1: " + tgParser.ParsedData[i]["EegPowerAlpha1"]);
             }
 
@@ -214,7 +214,7 @@ public class ConexionDiadema
             }*/
         }
         stop = new TimeSpan(DateTime.Now.Ticks);
-        archO.WriteLine("Time:" +(double) stop.Subtract(start).TotalMilliseconds);
+        //archO.WriteLine("Time:" +(double) stop.Subtract(start).TotalMilliseconds);
         archO.Close();    
     }
 

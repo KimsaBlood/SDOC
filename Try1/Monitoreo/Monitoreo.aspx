@@ -151,7 +151,7 @@
                             <button type="button" class="btn btn-primary" onclick="conectarDiadema()">Reintentar</button>
                         </div>
                         <div id="conectando-footer-success">
-                            <button type="button" class="btn btn-primary" onclick="">Continuar</button>
+                            <button type="button" class="btn btn-primary" onclick="" data-dismiss="modal">Continuar</button>
                         </div>
                     </div>
                 </div>
@@ -318,6 +318,24 @@
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
                         var error = eval("(" + XMLHttpRequest.responseText + ")");
                         //alert(error.Message);
+                    }
+                });
+            }
+
+            //Function que manda a llamar al método que entrena la red neuronal con los valores
+            function entrenarRedNeuonal(XMLHttpRequest, textStatus, errorThrown) {
+                $.ajax({
+                    type: "POST",
+                    url: "../Servicio/RedNeuronal.svc/EntrenarRedNeuronal",
+                    data: null,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    async: true,
+                    success: function (data) {
+                        alert(data.d);
+                    },
+                    error: function () {
+                        var error = eval("(" + XMLHttpRequest.responseText + ")");
                     }
                 });
             }
