@@ -25,6 +25,7 @@ public class RedNeuronal
     cAnclas n = new cAnclas();
 
 
+
     public RedNeuronal()
     {
         noNeuronas[0] = 2;
