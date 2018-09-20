@@ -136,10 +136,65 @@
            </div>
         </section>
 
-        <section>
-            <button id="entrenarRNA" class="btn" onclick="entrenarRedNeuonal()">Entrenar RNA</button>
-        </section>
+        <!----------------------------- Mensajes Emergentes ------------------------------------------------->
 
+        <!-- Mensaje de la efectividad del método : ponderación-->
+        <div class="modal fade" id="msgponderacionMetodo">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                    </div>
+                    <div class="modal-body">
+                        En una escala del 1 al 5, donde 1 es nada y 5 es mucho, marca la que consideres más adecuada. ¿Qué tan fectivo te resulto el método?
+                        <div class="row">
+                            <div class="col-md-1">
+                            </div>
+                            <div class="col-md-2" align="center">
+                                <input type="radio" name="ponderacion" value="1"/>1
+                            </div>
+                            <div class="col-md-2" align="center">
+                                <input type="radio" name="ponderacion" value="2"/>2
+                            </div>
+                            <div class="col-md-2" align="center">
+                                <input type="radio" name="ponderacion" value="3"/>3
+                            </div>
+                            <div class="col-md-2" align="center">
+                                <input type="radio" name="ponderacion" value="4"/>4
+                            </div>
+                            <div class="col-md-2" align="center">
+                                <input type="radio" name="ponderacion" value="5"/>5
+                            </div>
+                        </div>
+                    </div>
+                <div class="modal-footer">
+                    <button id="btnPonderacion"class="btn" onclick="entrenarRedNeuonal()" data-dismiss="modal" disabled>Aceptar</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensaje Elige otro método de inducción -->
+        <div class="modal fade" id="msgIntentaOtroMetodo">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Intenta otro método </p>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensaje Realizando Conexión con el Dispositivo --->
         <div class="modal fade" id="msgConectando">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -193,12 +248,13 @@
 
                 //Detecta cuando el audio termino de reproducirse y cierra la conexión con la diadema
                 $('[name=audios_estresantes]').on('ended', function () {
-                    desconectarDiadema();   
+                    desconectarDiadema();  
+                    $("#msgponderacionMetodo").modal({backdrop:"static"});
                 });
 
                 //Comienza a guardar las ondas cuando inicia la reproducción del audio
                 $('[name=audios_estresantes]').on('play', function () {
-                    alert('El audio se esta reproduciendo');
+                    //alert('El audio se esta reproduciendo');
                     $.ajax({
                         type: "POST",
                         url: "../Servicio/ConexionDiadema.svc/GuardarDatos",
@@ -239,6 +295,10 @@
                             alert(error.Message);
                         }
                     });
+                });
+
+                $("input[name='ponderacion']").click(function (e) {
+                    $("#btnPonderacion").removeAttr('disabled');
                 });
             });
 
@@ -328,29 +388,29 @@
 
             //Function que manda a llamar al método que entrena la red neuronal con los valores
             function entrenarRedNeuonal() {
-                alert("entreno RND¿¿a");
-                $.ajax({
-                    type: "POST",
-                    url: "../Servicio/RedNeuronal.svc/EntrenarRedNeuronal",
-                    data: null,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    async: true,
-                    success: function (data) {
-                        alert("data");
-
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        var error = eval("(" + XMLHttpRequest.responseText + ")");
-                        alert(error.Message);
-                    }
-                });
+               
+                if ($("input[name='ponderacion']:checked").val() >= 3) {
+                    alert("Se va a entrenar la RNA");
+                    $.ajax({
+                        type: "POST",
+                        url: "../Servicio/RedNeuronal.svc/EntrenarRedNeuronal",
+                        data: null,
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        async: true,
+                        success: function (data) {
+                            alert("Se entreno correctamente");
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            var error = eval("(" + XMLHttpRequest.responseText + ")");
+                            alert(error.Message);
+                        }
+                    });
+                } else {
+                    $("#msgIntentaOtroMetodo").modal();
+                }
             }
-    </script>
+        </script>
         
 </asp:Content>
 
-
-
-       
-        

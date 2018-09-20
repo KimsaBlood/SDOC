@@ -29,13 +29,14 @@ public class ConexionDiadema
         try
         {
             De.Device.DataReceived += new EventHandler(OnDataReceived);
+            return "Se estan leyendo los datos de la Diadema";
         }
         catch (Exception e)
         {
-
+            return "No se estan leyendo los datos del dispositivo";
         }
         
-        return "Guardando";
+        //return "Guardando";
     }
 
     [OperationContract]
