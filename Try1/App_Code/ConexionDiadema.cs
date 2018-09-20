@@ -43,7 +43,7 @@ public class ConexionDiadema
     {
         String ruta_archivo = System.AppDomain.CurrentDomain.BaseDirectory + "ondas.txt";
         StreamWriter archO = new StreamWriter(ruta_archivo);
-        archO.Close();
+        //archO.Close();
         StreamWriter dispositivo = new StreamWriter(System.AppDomain.CurrentDomain.BaseDirectory + "dispositivo.txt");
         dispositivo.Close();
 
@@ -146,56 +146,56 @@ public class ConexionDiadema
                 //A Poor Signal value of 0 indicates that your headset is fitting properly
                 numS++;               
                 //Console.WriteLine("Poor Signal:" + tgParser.ParsedData[i]["PoorSignal"]);
-                archO.WriteLine(numS+":");
-                archO.WriteLine(i+"Poor Signal: " + tgParser.ParsedData[i]["PoorSignal"]);
+                archO.WriteLine(numS);
+                archO.WriteLine("Poor Signal: " + tgParser.ParsedData[i]["PoorSignal"]);
                 PoorSig = (byte)tgParser.ParsedData[i]["PoorSignal"];
             }
 
             if (tgParser.ParsedData[i].ContainsKey("EegPowerDelta"))
             {
-                archO.WriteLine(i+"Delta: " + tgParser.ParsedData[i]["EegPowerDelta"]);
+                archO.WriteLine("Delta: " + tgParser.ParsedData[i]["EegPowerDelta"]);
                 //Console.WriteLine("Delta: " + tgParser.ParsedData[i]["EegPowerDelta"]);
             }
 
             if (tgParser.ParsedData[i].ContainsKey("EegPowerTheta"))
             {
-                archO.WriteLine(i+"Theta: " + tgParser.ParsedData[i]["EegPowerTheta"]);
+                archO.WriteLine("Theta: " + tgParser.ParsedData[i]["EegPowerTheta"]);
                 //Console.WriteLine("Theta: " + tgParser.ParsedData[i]["EegPowerTheta"]);
             }
 
             if (tgParser.ParsedData[i].ContainsKey("EegPowerAlpha1"))
             {
-                archO.WriteLine(i+"Alpha1: " + tgParser.ParsedData[i]["EegPowerAlpha1"]);
+                archO.WriteLine("Alpha1: " + tgParser.ParsedData[i]["EegPowerAlpha1"]);
                 //Console.WriteLine("Alpha1: " + tgParser.ParsedData[i]["EegPowerAlpha1"]);
             }
 
             if (tgParser.ParsedData[i].ContainsKey("EegPowerAlpha2"))
             {
-                archO.WriteLine(i+"Alpha2: " + tgParser.ParsedData[i]["EegPowerAlpha2"]);
+                archO.WriteLine("Alpha2: " + tgParser.ParsedData[i]["EegPowerAlpha2"]);
                 //Console.WriteLine("Alpha2: " + tgParser.ParsedData[i]["EegPowerAlpha2"]);
             }
 
             if (tgParser.ParsedData[i].ContainsKey("EegPowerBeta1"))
             {
-                archO.WriteLine(i+"Beta1: " + tgParser.ParsedData[i]["EegPowerBeta1"]);
+                archO.WriteLine("Beta1: " + tgParser.ParsedData[i]["EegPowerBeta1"]);
                 //Console.WriteLine("Beta1: " + tgParser.ParsedData[i]["EegPowerBeta1"]);
             }
 
             if (tgParser.ParsedData[i].ContainsKey("EegPowerBeta2"))
             {
-                archO.WriteLine(i+"Beta2: " + tgParser.ParsedData[i]["EegPowerBeta2"]);
+                archO.WriteLine("Beta2: " + tgParser.ParsedData[i]["EegPowerBeta2"]);
                 //Console.WriteLine("Beta2: " + tgParser.ParsedData[i]["EegPowerBeta2"]);
             }
 
             if (tgParser.ParsedData[i].ContainsKey("EegPowerGamma1"))
             {
-                archO.WriteLine(i+"Gamma1: " + tgParser.ParsedData[i]["EegPowerGamma1"]);
+                archO.WriteLine("Gamma1: " + tgParser.ParsedData[i]["EegPowerGamma1"]);
                 //Console.WriteLine("Gamma1: " + tgParser.ParsedData[i]["EegPowerGamma1"]);
             }
 
             if (tgParser.ParsedData[i].ContainsKey("EegPowerGamma2"))
             {
-                archO.WriteLine(i+"Gamma2: " + tgParser.ParsedData[i]["EegPowerGamma2"]);
+                archO.WriteLine("Gamma2: " + tgParser.ParsedData[i]["EegPowerGamma2"]);
                 //Console.WriteLine("Gamma2: " + tgParser.ParsedData[i]["EegPowerGamma2"]);
             }
             /*if (tgParser.ParsedData[i].ContainsKey("BlinkStrength"))
