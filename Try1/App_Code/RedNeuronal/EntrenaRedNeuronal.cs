@@ -274,4 +274,20 @@ public class EntrenaRedNeuronal
             }
         }
     }
+
+    public double[,] What()
+    {
+        double[,] a1 = capaIn.propForward();
+        for (int i = 0; i < capasOc.GetLength(0); i++)
+        {
+            capasOc[i] = new Capa(noNeuronas[i + 1], a1);
+            capasOc[i].setFunction(function[i + 1]);
+            a1 = capasOc[i].propForward();
+        }
+        capaOut = new Capa(noNeuronas[noCapasOc + 1], a1);
+        capaOut.setFunction(function[noCapasOc + 1]);
+        a1 = capaOut.propForward();
+        printOut(a1);
+        return a1;
+    }
 }

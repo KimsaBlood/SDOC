@@ -136,6 +136,10 @@
            </div>
         </section>
 
+        <section>
+            <button id="entrenarRNA" class="btn" onclick="entrenarRedNeuonal()">Entrenar RNA</button>
+        </section>
+
         <div class="modal fade" id="msgConectando">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -323,7 +327,8 @@
             }
 
             //Function que manda a llamar al método que entrena la red neuronal con los valores
-            function entrenarRedNeuonal(XMLHttpRequest, textStatus, errorThrown) {
+            function entrenarRedNeuonal() {
+                alert("entreno RND¿¿a");
                 $.ajax({
                     type: "POST",
                     url: "../Servicio/RedNeuronal.svc/EntrenarRedNeuronal",
@@ -332,10 +337,12 @@
                     dataType: "json",
                     async: true,
                     success: function (data) {
-                        alert(data.d);
+                        alert("data");
+
                     },
-                    error: function () {
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
                         var error = eval("(" + XMLHttpRequest.responseText + ")");
+                        alert(error.Message);
                     }
                 });
             }
