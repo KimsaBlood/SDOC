@@ -128,7 +128,7 @@ public class EntrenaRedNeuronal
         }
         capaIn.actPesos(restaMatrix(capaIn.getPesos(), multMatrix2(alfa, multMatrix(sen[0].getThisSen(), trans(vIn)))));
         int ii = 0;
-        while (ii < 10000)
+        while (ii < 50)
         {
             ii++;
             for (int i = 0; i < vError.GetLength(0); i++)

@@ -26,7 +26,15 @@ public class ConexionDiadema
     [OperationContract]
     public string GuardarDatos()
     {
-        De.Device.DataReceived += new EventHandler(OnDataReceived);
+        try
+        {
+            De.Device.DataReceived += new EventHandler(OnDataReceived);
+        }
+        catch (Exception e)
+        {
+
+        }
+        
         return "Guardando";
     }
 
