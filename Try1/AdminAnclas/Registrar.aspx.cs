@@ -14,10 +14,9 @@ public partial class AdminAnclas_Registrar : System.Web.UI.Page
         DataTable tblAnclas= obj.TraeTipo();
         if (tblAnclas.Rows.Count > 0)
         {
+            if(tipo.Items.Count == 0)
                 for (int i = 0; i < tblAnclas.Rows.Count; i++)
-                {
                     tipo.Items.Add(new ListItem(tblAnclas.Rows[i]["tipoAncla"].ToString(), tblAnclas.Rows[i]["idTipoAncla"].ToString()));
-                }
         }
         else
         {
