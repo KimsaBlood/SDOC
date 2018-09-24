@@ -1,1 +1,10 @@
-hola
+1
+Poor Signal: 200
+Delta: 20008
+Theta: 20050
+Alpha1: 2400
+Alpha2: 2200
+Beta1: 2100
+Beta2: 20089
+Gamma1: 2000
+Gamma2: 20000
