@@ -133,7 +133,7 @@ public partial class Monitoreo_Monitoreo : System.Web.UI.Page
 
             if (tgParser.ParsedData[i].ContainsKey("Attention"))
             {
-                StreamWriter escirtura = File.AppendText("C:\\Users\\gcaza\\OneDrive\\Documentos\\TT\\Prueba2\\ejemplo.txt");
+                StreamWriter escirtura = File.AppendText(System.AppDomain.CurrentDomain.BaseDirectory + "ejemplo.txt");
                 //Console.WriteLine("Att Value:" + tgParser.ParsedData[i]["Attention"]);
                 escirtura.WriteLine("Att Value:" + tgParser.ParsedData[i]["Attention"]);
                 escirtura.Close();
@@ -142,7 +142,7 @@ public partial class Monitoreo_Monitoreo : System.Web.UI.Page
 
             if (tgParser.ParsedData[i].ContainsKey("Meditation"))
             {
-                StreamWriter escirtura = File.AppendText("C:\\Users\\gcaza\\OneDrive\\Documentos\\TT\\Prueba2\\ejemplo.txt");
+                StreamWriter escirtura = File.AppendText(System.AppDomain.CurrentDomain.BaseDirectory + "ejemplo.txt");
                 Console.WriteLine("Med Value:" + tgParser.ParsedData[i]["Meditation"]);
                 escirtura.WriteLine("Med Value:" + tgParser.ParsedData[i]["Meditation"]);
                 escirtura.Close();
@@ -164,7 +164,7 @@ public partial class Monitoreo_Monitoreo : System.Web.UI.Page
 
             if (tgParser.ParsedData[i].ContainsKey("BlinkStrength"))
             {
-                StreamWriter escirtura = File.AppendText("C:\\Users\\gcaza\\OneDrive\\Documentos\\TT\\Prueba2\\ejemplo.txt");
+                StreamWriter escirtura = File.AppendText(System.AppDomain.CurrentDomain.BaseDirectory + "ejemplo.txt");
                 //escirtura.WriteLine("Eyeblink " + tgParser.ParsedData[i]["BlinkStrength"]);
                 Console.WriteLine("Eyeblink " + tgParser.ParsedData[i]["BlinkStrength"]);
                 escirtura.Close();
