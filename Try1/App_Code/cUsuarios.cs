@@ -201,7 +201,7 @@ public class cUsuarios
         Mensaje = "";
         if (Mensaje == "")
         {
-            if (userPass != "")
+            if (userPass != null)
             {
                 userPass = new Extras().ConvierteMD5(userPass);
             }

@@ -29,6 +29,6 @@ public partial class Eliminar : System.Web.UI.Page
         ScriptManager.RegisterStartupScript(this, GetType(),
                   "ServerControlScript", script, true);
         Session.Abandon();
-        Response.Redirect("Default.aspx");
+        Response.Redirect("../Default.aspx");
     }
 }
