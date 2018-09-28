@@ -127,6 +127,6 @@ public partial class AdminAnclas_Estimular : System.Web.UI.Page
     }
     protected void Finalizar_Click1(object sender, EventArgs e)
     {
-
+        MultiView1.ActiveViewIndex = 0;
     }
 }
