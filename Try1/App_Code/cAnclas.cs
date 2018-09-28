@@ -160,4 +160,16 @@ public class cAnclas
         
         return tbl;
     }
+
+    public void DeleteAncla(int idUser, int idAncla)
+    {
+        DatosSql sql = new DatosSql();
+        sql.Ejecutar("spDelete_Ancla",idUser, idAncla);
+    }
+
+    public void EditarAncla(int idUser, int idAncla, string title, string desc)
+    {
+        DatosSql sql = new DatosSql();
+        sql.Ejecutar("spEditar_Ancla", idUser, idAncla, title, desc);
+    }
 }

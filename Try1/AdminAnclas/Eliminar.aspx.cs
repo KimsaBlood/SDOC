@@ -38,15 +38,27 @@ public partial class AdminAnclas_Eliminar : System.Web.UI.Page
     }
     protected void gvAnclas_SelectedIndexChanged(object sender, EventArgs e)
     {
+
         int index = gvAnclas.SelectedIndex;
-        string titleN = ((LinkButton)gvAnclas.Rows[index].Cells[1].Controls[0]).Text;
-        string descN = ((LinkButton)gvAnclas.Rows[index].Cells[2].Controls[0]).Text;
-        string idTipoN = ((LinkButton)gvAnclas.Rows[index].Cells[4].Controls[0]).Text;
-        string idAnclaN = ((LinkButton)gvAnclas.Rows[index].Cells[0].Controls[0]).Text;
-        string pathN = ((LinkButton)gvAnclas.Rows[index].Cells[5].Controls[0]).Text;
-        string[] tokens = pathN.Split('/');
-        cAnclas obj = new cAnclas((int)Session["idUser"], Convert.ToInt32(idAnclaN), titleN, descN, pathN, Convert.ToInt32(idTipoN), 1);
-        obj.GuardaAncla();
+        try
+        {
+            string idAnclaN = ((LinkButton)gvAnclas.Rows[index].Cells[0].Controls[0]).Text;
+            cAnclas obj = new cAnclas();
+            obj.DeleteAncla((int)Session["idUser"], Convert.ToInt32(idAnclaN));
+            Response.Redirect(Request.ApplicationPath + "AdminAnclas/Eliminar.aspx");
+            //string titleN = ((LinkButton)gvAnclas.Rows[index].Cells[1].Controls[0]).Text;
+            //string descN = ((LinkButton)gvAnclas.Rows[index].Cells[2].Controls[0]).Text;
+            //string idTipoN = ((LinkButton)gvAnclas.Rows[index].Cells[4].Controls[0]).Text; 
+            //string pathN = ((LinkButton)gvAnclas.Rows[index].Cells[5].Controls[0]).Text;
+            //string[] tokens = pathN.Split('/');
+            //cAnclas obj = new cAnclas((int)Session["idUser"], Convert.ToInt32(idAnclaN), titleN, descN, pathN, Convert.ToInt32(idTipoN), 1);
+            //obj.GuardaAncla();
+        }
+        catch (Exception ex)
+        {
+
+        }
+ 
     }
 
 }

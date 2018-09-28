@@ -37,26 +37,35 @@ public partial class AdminAnclas_Modificar : System.Web.UI.Page
         String myPath = path.Text;
         String val = tipo.Text;
         
-        if (val == "2")//sonidos
+        if(file.FileName != "")
         {
-            System.IO.File.Delete(System.AppDomain.CurrentDomain.BaseDirectory + "Files/sounds/" + path.Text);
-            myPath =  "Files/sounds/" + file.FileName;
-            file.SaveAs(System.AppDomain.CurrentDomain.BaseDirectory + myPath);
+            if (val == "2")//sonidos
+            {
+                System.IO.File.Delete(System.AppDomain.CurrentDomain.BaseDirectory + "Files/sounds/" + path.Text);
+                myPath = "Files/sounds/" + file.FileName;
+                file.SaveAs(System.AppDomain.CurrentDomain.BaseDirectory + myPath);
+            }
+            else if (val == "3")
+            {
+                System.IO.File.Delete(System.AppDomain.CurrentDomain.BaseDirectory + "Files/images/" + path.Text);
+                myPath = "Files/images/" + file.FileName;
+                file.SaveAs(System.AppDomain.CurrentDomain.BaseDirectory + myPath);
+            }
+            else if (val == "6")
+            {
+                System.IO.File.Delete(System.AppDomain.CurrentDomain.BaseDirectory + "Files/videos/" + path.Text);
+                myPath = "Files/videos/" + file.FileName;
+                file.SaveAs(System.AppDomain.CurrentDomain.BaseDirectory + myPath);
+            }
+            cAnclas obj = new cAnclas((int)Session["idUser"], Convert.ToInt32(id.Text), title.Text, desc.Text, myPath, Convert.ToInt32(val), 2);
+            obj.GuardaAncla();
         }
-        else if (val == "3")
+        else
         {
-            System.IO.File.Delete(System.AppDomain.CurrentDomain.BaseDirectory + "Files/images/" + path.Text);
-            myPath =  "Files/images/" + file.FileName;
-            file.SaveAs(System.AppDomain.CurrentDomain.BaseDirectory + myPath);
+            cAnclas obj = new cAnclas();
+            obj.EditarAncla((int)Session["idUser"], Convert.ToInt32(id.Text), title.Text, desc.Text);
         }
-        else if (val == "6")
-        {
-            System.IO.File.Delete(System.AppDomain.CurrentDomain.BaseDirectory + "Files/videos/" + path.Text);
-            myPath =  "Files/videos/" + file.FileName;
-            file.SaveAs(System.AppDomain.CurrentDomain.BaseDirectory + myPath);
-        }
-        cAnclas obj = new cAnclas((int)Session["idUser"], Convert.ToInt32(id.Text), title.Text, desc.Text, myPath, Convert.ToInt32(val), 2);
-        obj.GuardaAncla();
+        
     }
 
     protected void gvAnclas_SelectedIndexChanged(object sender, EventArgs e)
