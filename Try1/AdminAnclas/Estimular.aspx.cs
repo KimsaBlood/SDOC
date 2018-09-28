@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 
 public partial class AdminAnclas_Estimular : System.Web.UI.Page
 {
+    static int estimularAnc;
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -15,6 +16,26 @@ public partial class AdminAnclas_Estimular : System.Web.UI.Page
 
     protected void Start_Click(object sender, EventArgs e)
     {
+        estimularAnc = 0;
+        MultiView1.ActiveViewIndex = 1;
+        cAnclas obj = new cAnclas((int)Session["idUser"], 0);
+        DataTable tblAnclas = obj.TraeInfoAnclas();
+        if (tblAnclas.Rows.Count > 0)
+        {
+            int anclaId = Convert.ToInt32(tblAnclas.Rows[0]["idAncla"].ToString());
+            if (anclaId == 2)
+            {
+
+            }
+        }
+        gvAnclas.GridLines = GridLines.None;
+        gvAnclas.DataSource = tblAnclas;
+        gvAnclas.DataBind();
+    }
+
+    protected void Start_Click_Audio(object sender, EventArgs e)
+    {
+        estimularAnc = 1;
         MultiView1.ActiveViewIndex = 1;
         cAnclas obj = new cAnclas((int)Session["idUser"], 0);
         DataTable tblAnclas = obj.TraeInfoAnclas();
@@ -45,15 +66,17 @@ public partial class AdminAnclas_Estimular : System.Web.UI.Page
             if (idTipoN == "2")
             {
                 litFile.Text = "<audio controls  src='../" + pathN + "' type='audio/mp3'></audio>";
+                litFile2.Text = "<audio controls  src='../" + pathN + "' type='audio/mp3'></audio>";
             }
             else if (idTipoN == "3")
             {
                 litFile.Text = "<img src='../" + pathN + "' class='img-thumbnail' style='width:300px;'>";
+                litFile2.Text = "<img src='../" + pathN + "' class='img-thumbnail' style='width:300px;'>";
             }
             else if (idTipoN == "6")
             {
                 litFile.Text = "<center><video width=500 controls><source src='../" + pathN + "' type='video/mp4;codecs='avc1.42E01E, mp4a.40.2''></video></center>";
-
+                litFile2.Text = "<center><video width=500 controls><source src='../" + pathN + "' type='video/mp4;codecs='avc1.42E01E, mp4a.40.2''></video></center>";
             }
         }
         else
@@ -62,7 +85,19 @@ public partial class AdminAnclas_Estimular : System.Web.UI.Page
         }
         lblTitle.Text = titleN;
         lblDescrip.Text = descN;
-        MultiView1.ActiveViewIndex = 2;
+
+        lblTitle2.Text = titleN;
+        lblDescrip2.Text = descN;
+
+        if (estimularAnc == 0)
+        {
+            MultiView1.ActiveViewIndex = 2;
+        }
+        else if (estimularAnc == 1)
+        {
+            MultiView1.ActiveViewIndex = 6;
+        }
+        
     }
 
     protected void Next1_Click(object sender, EventArgs e)
@@ -75,6 +110,21 @@ public partial class AdminAnclas_Estimular : System.Web.UI.Page
         MultiView1.ActiveViewIndex = 4;
     }
 
+    protected void Next3_Click(object sender, EventArgs e)
+    {
+        MultiView1.ActiveViewIndex = 5;
+    }
+
+    protected void Next4_Click(object sender, EventArgs e)
+    {
+        MultiView1.ActiveViewIndex = 7;
+    }
+
+
+    protected void Next5_Click(object sender, EventArgs e)
+    {
+        MultiView1.ActiveViewIndex = 7;
+    }
     protected void Finalizar_Click1(object sender, EventArgs e)
     {
 
