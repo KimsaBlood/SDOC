@@ -5,6 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="container-fluid">
         <div class="row">
+
+        </div>
+        <div class="row">
             <div class="col-lg-2"></div>
             <div class="col-lg-8">
                 <form class="form-horizontal" >
