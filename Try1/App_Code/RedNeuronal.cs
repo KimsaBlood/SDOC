@@ -26,7 +26,7 @@ public class RedNeuronal
     double[,] target = new double[2, 1];
     cAnclas n = new cAnclas();
 
-
+    //tansig en capas intermedias para que converga mas rapido
     public RedNeuronal()
     {
         noNeuronas[0] = 2;
@@ -36,7 +36,7 @@ public class RedNeuronal
         function[1] = 1;
         function[2] = 1;
    
-        target[0, 0] = 1;
+        target[0, 0] = 1;//estres 10, 01 no estres
         target[1, 0] = 0;
     }
 
