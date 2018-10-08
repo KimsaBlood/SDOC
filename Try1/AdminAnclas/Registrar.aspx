@@ -168,6 +168,7 @@
         </Triggers>
     </asp:UpdatePanel>
     
+    
     <script type="text/javascript">
         $(document).ready(function () {
             $("#divResult").hide();
