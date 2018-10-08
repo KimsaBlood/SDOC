@@ -10,6 +10,8 @@ public partial class AdminAnclas_Registrar : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        Page.Form.Attributes.Add("enctype", "multipart/form-data");
+        //ScriptManager.GetCurrent(this).RegisterPostBackControl();
         cAnclas obj = new cAnclas();
         DataTable tblAnclas= obj.TraeTipo();
         if (tblAnclas.Rows.Count > 0)
@@ -33,11 +35,15 @@ public partial class AdminAnclas_Registrar : System.Web.UI.Page
         {
             file.Visible = true;
             lblFile.Visible = true;
+            btnRegistrarF.Visible = true;
+            btnRegistrar.Visible = false;
         }
         else
         {
             file.Visible = false;
             lblFile.Visible = false;
+            btnRegistrarF.Visible = false;
+            btnRegistrar.Visible = true;
         }
     }
 
@@ -45,6 +51,9 @@ public partial class AdminAnclas_Registrar : System.Web.UI.Page
     {
         String myPath="";
         String val = tipo.SelectedValue;
+        if(file.HasFile)
+
+           
         if (val == "2")//sonidos
         {
             myPath = "Files/sounds/" + file.FileName;
@@ -52,7 +61,7 @@ public partial class AdminAnclas_Registrar : System.Web.UI.Page
         }
         else if (val == "3")
         {
-            myPath =  "Files/images/" + file.FileName;
+            myPath =  "Files/images/" + file.PostedFile.FileName;
             file.SaveAs(System.AppDomain.CurrentDomain.BaseDirectory + myPath);
         }
         else if (val == "6")
@@ -61,6 +70,19 @@ public partial class AdminAnclas_Registrar : System.Web.UI.Page
             file.SaveAs(System.AppDomain.CurrentDomain.BaseDirectory + myPath);
         }
         cAnclas obj = new cAnclas((int)Session["idUser"], 0, title.Text, desc.Text,myPath, Convert.ToInt32(tipo.SelectedValue), 0);
-        obj.GuardaAncla();
+        string result = obj.GuardaAncla();
+        title.Text = "";
+        desc.Text = "";
+        tipo.SelectedIndex = -1;
+        file.Visible = false;
+        lblFile.Visible = false;
+        btnRegistrarF.Visible = false;
+        btnRegistrar.Visible = true;
+        if(result == "Ancla Registrada Correctamente")
+            resultGA.Text = "msg-1";
+        else if(result == "Ancla Registrada Anteriormente")
+            resultGA.Text = "msg-2";
+        else if(result == "Excede el número de anclas permitidas")
+            resultGA.Text = "msg-3";
     }
 }
